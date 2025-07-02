@@ -1,0 +1,68 @@
+<main class="min-h-screen bg-gray-100">
+  <div class="container mx-auto py-16 px-8 max-w-6xl">
+    <div class="bg-white rounded-lg shadow-md overflow-hidden h-[calc(100vh-8rem)] grid grid-rows-[auto_1fr] md:grid-cols-[2fr_3fr]">
+
+      <div class="col-span-full">
+        <!-- Header Section -->
+        <div class="bg-gray-50 p-4 border-b border-gray-200">
+          <div class="flex justify-between items-center">
+            <div>
+              <h1 class="font-medium text-lg">Inbox</h1>
+              <div class="text-sm text-gray-500">
+                <%= pluralize(@unread_count, 'unread message') %> ·
+                <%= pluralize(@total_count, 'total message') %>
+              </div>
+            </div>
+
+            <div class="flex space-x-2">
+              <%= link_to emails_path,
+                  class: "px-4 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50 transition-colors" do %>
+                Refresh
+              <% end %>
+
+              <button class="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                New Email
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email List Panel -->
+      <div class="border-b md:border-b-0 md:border-r border-gray-200 overflow-hidden flex flex-col">
+        <div class="divide-y divide-gray-200 overflow-y-auto flex-1">
+          <% if @emails.any? %>
+            <%= render @emails %>
+          <% else %>
+            <div class="p-8 text-center text-gray-500">
+              <p class="text-xl mb-2">📧</p>
+              <p class="font-medium">No emails found</p>
+              <p class="text-sm mt-1">Your inbox is empty</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Email Detail Panel -->
+      <div class="overflow-hidden flex flex-col">
+        <div class="flex-1 flex items-center justify-center">
+          <div class="text-center text-gray-500">
+            <div class="w-16 h-16 mx-auto text-gray-300 mb-4">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-full h-full" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                </path>
+                <polyline stroke-linecap="round" stroke-linejoin="round"
+                          points="22,6 12,13 2,6">
+                </polyline>
+              </svg>
+            </div>
+            <h3 class="text-lg font-medium mb-2">No email selected</h3>
+            <p>Select an email from the list to view its contents</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>

@@ -10,8 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_02_143337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "emails", force: :cascade do |t|
+    t.string "from", null: false
+    t.text "subject", null: false
+    t.text "body", null: false
+    t.datetime "received_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.boolean "read", default: false, null: false
+    t.boolean "starred", default: false, null: false
+    t.text "labels", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["labels"], name: "index_emails_on_labels", using: :gin
+    t.index ["read", "received_at"], name: "index_emails_on_read_and_received_at"
+    t.index ["read"], name: "index_emails_on_read"
+    t.index ["received_at"], name: "index_emails_on_received_at"
+    t.index ["starred"], name: "index_emails_on_starred"
+  end
 end
