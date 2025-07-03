@@ -1,27 +1,30 @@
-<!-- app/views/emails/index.html.erb -->
-<main class="min-h-screen bg-gray-100">
-  <div class="container mx-auto py-16 px-8 max-w-6xl">
-    <div class="bg-white rounded-lg shadow-md overflow-hidden h-[calc(100vh-8rem)] grid grid-rows-[auto_1fr] md:grid-cols-[2fr_3fr]"
-         data-controller="email-selection">
+<main class='min-h-screen bg-gray-100'>
+  <div class='container mx-auto py-16 px-8 max-w-6xl'>
+    <div class='bg-white rounded-lg shadow-md overflow-hidden
+                h-[calc(100vh-8rem)]
+                grid grid-rows-[auto_1fr] md:grid-cols-[2fr_3fr]'
+         data-controller='inbox'>
 
       <!-- Header Section -->
-      <div class="col-span-full">
-        <div class="bg-gray-50 p-4 border-b border-gray-200">
-          <div class="flex justify-between items-center">
+      <div class='col-span-full'>
+        <div class='bg-gray-50 p-4 border-b border-gray-200'>
+          <div class='flex justify-between items-center'>
             <div>
-              <h1 class="font-medium text-lg">Inbox</h1>
-              <%= turbo_frame_tag "email_header_count" do %>
-                <%= render "email_header_count" %>
+              <h1 class='font-medium text-lg'>Inbox</h1>
+              <%= turbo_frame_tag 'counts' do %>
+                <%= render 'counts' %>
               <% end %>
             </div>
 
-            <div class="flex space-x-2">
+            <div class='flex space-x-2'>
               <%= link_to emails_path,
-                  class: "px-4 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50 transition-colors" do %>
+                  class: 'px-4 py-2 text-sm border border-gray-300
+                         rounded-md hover:bg-gray-50 transition-colors' do %>
                 Refresh
               <% end %>
 
-              <button class="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+              <button class='px-4 py-2 text-sm bg-blue-600 text-white
+                             rounded-md hover:bg-blue-700 transition-colors'>
                 New Email
               </button>
             </div>
@@ -30,31 +33,30 @@
       </div>
 
       <!-- Email List Panel -->
-      <div class="border-b md:border-b-0 md:border-r border-gray-200 overflow-hidden flex flex-col"
-           data-email-selection-target="emailList">
-        <div class="divide-y divide-gray-200 overflow-y-auto flex-1">
-          <% if @emails.any? %>
-            <% @emails.each do |email| %>
-              <%= render "email_item_frame", email: email, selected: false %>
-            <% end %>
-          <% else %>
-            <div class="p-8 text-center text-gray-500">
-              No emails found
-            </div>
-          <% end %>
+      <div class='border-b md:border-b-0 md:border-r border-gray-200
+                  overflow-hidden flex flex-col'
+           data-inbox-target='emailList'>
+        <div class='divide-y divide-gray-200 overflow-y-auto flex-1'>
+          <%= render @emails, selected: false, empty: 'No emails found' %>
         </div>
       </div>
 
       <!-- Email Detail Panel -->
-      <%= turbo_frame_tag "email_detail",
-          class: "overflow-hidden flex flex-col hidden md:flex",
-          data: { email_selection_target: "emailDetail" } do %>
-        <div class="flex-1 flex items-center justify-center">
-          <div class="text-center text-gray-500">
-            <svg class="h-12 w-12 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      <%= turbo_frame_tag 'detail',
+          class: 'overflow-hidden flex flex-col hidden md:flex',
+          data: { inbox_target: 'emailDetail' } do %>
+        <div class='flex-1 flex items-center justify-center'>
+          <div class='text-center text-gray-500'>
+            <svg class='h-12 w-12 mx-auto mb-4 text-gray-300'
+                 fill='none'
+                 stroke='currentColor'
+                 viewBox='0 0 24 24'>
+              <path stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='2'
+                    d='M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'/>
             </svg>
-            <h3 class="text-lg font-medium mb-2">No email selected</h3>
+            <h3 class='text-lg font-medium mb-2'>No email selected</h3>
             <p>Select an email from the list to view its contents</p>
           </div>
         </div>

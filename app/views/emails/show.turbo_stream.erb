@@ -1,17 +1,11 @@
-<%= turbo_stream.replace "email_detail" do %>
-  <%= turbo_frame_tag "email_detail", class: "overflow-hidden flex flex-col" do %>
-    <%= render "email_detail", email: @selected_email %>
-  <% end %>
+<%= turbo_stream.update 'detail' do %>
+  <%= render 'detail', email: @email %>
 <% end %>
 
-<%# Update header count if an unread email was marked as read %>
-<% if @count_changed %>
-  <%= turbo_stream.replace "email_header_count" do %>
-    <%= turbo_frame_tag "email_header_count" do %>
-      <div class="text-sm text-gray-500">
-        <%= pluralize(@unread_count, 'unread message') %> ·
-        <%= pluralize(@total_count, 'total message') %>
-      </div>
-    <% end %>
-  <% end %>
+<%= turbo_stream.replace @email do %>
+  <%= render @email, selected: true %>
 <% end %>
+
+<%= turbo_stream.update 'counts' do %>
+  <%= render 'counts' %>
+<% end if @email.read_previously_changed? %>

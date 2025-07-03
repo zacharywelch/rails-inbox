@@ -1,8 +1,0 @@
-<%= turbo_frame_tag "email_item_#{email.id}",
-    class: class_names(
-      "hover:bg-gray-50 cursor-pointer block",
-      email.read? ? "bg-white" : "bg-blue-50",
-      selected ? "border-l-4 border-blue-600" : ""
-    ) do %>
-  <%= render "email_item", email: email %>
-<% end %>

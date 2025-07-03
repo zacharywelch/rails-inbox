@@ -1,7 +1,7 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ["emailList", "emailDetail"]
+  static targets = ['emailList', 'emailDetail']
   static values = { selectedId: String }
 
   selectEmail(event) {
@@ -20,7 +20,7 @@ export default class extends Controller {
   // Private methods
 
   clearSelection() {
-    this.selectedIdValue = ""
+    this.selectedIdValue = ''
     const selectedElement = this.element.querySelector('.border-blue-600')
     if (selectedElement) {
       selectedElement.classList.remove('border-l-4', 'border-blue-600')
