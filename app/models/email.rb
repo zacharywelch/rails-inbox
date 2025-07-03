@@ -12,4 +12,8 @@ class Email < ApplicationRecord
   scope :unread, -> { where(read: false) }
   scope :starred, -> { where(starred: true) }
   scope :recent, -> { order(received_at: :desc) }
+
+  def read!
+    update(read: true)
+  end
 end

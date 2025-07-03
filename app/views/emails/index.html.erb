@@ -1,6 +1,8 @@
 <main class="min-h-screen bg-gray-100">
   <div class="container mx-auto py-16 px-8 max-w-6xl">
-    <div class="bg-white rounded-lg shadow-md overflow-hidden h-[calc(100vh-8rem)] grid grid-rows-[auto_1fr] md:grid-cols-[2fr_3fr]">
+    <div class="bg-white rounded-lg shadow-md overflow-hidden h-[calc(100vh-8rem)] grid grid-rows-[auto_1fr] md:grid-cols-[2fr_3fr]"
+         data-controller="email-selection"
+         data-email-selection-selected-class="border-l-4 border-blue-600">
 
       <div class="col-span-full">
         <!-- Header Section -->
@@ -8,10 +10,12 @@
           <div class="flex justify-between items-center">
             <div>
               <h1 class="font-medium text-lg">Inbox</h1>
-              <div class="text-sm text-gray-500">
-                <%= pluralize(@unread_count, 'unread message') %> ·
-                <%= pluralize(@total_count, 'total message') %>
-              </div>
+              <%= turbo_frame_tag "email_header_count" do %>
+                <div class="text-sm text-gray-500">
+                  <%= pluralize(@unread_count, 'unread message') %> ·
+                  <%= pluralize(@total_count, 'total message') %>
+                </div>
+              <% end %>
             </div>
 
             <div class="flex space-x-2">
@@ -29,7 +33,8 @@
       </div>
 
       <!-- Email List Panel -->
-      <div class="border-b md:border-b-0 md:border-r border-gray-200 overflow-hidden flex flex-col">
+      <div class="border-b md:border-b-0 md:border-r border-gray-200 overflow-hidden flex flex-col"
+           data-email-selection-target="emailList">
         <div class="divide-y divide-gray-200 overflow-y-auto flex-1">
           <% if @emails.any? %>
             <%= render @emails %>
@@ -44,24 +49,29 @@
       </div>
 
       <!-- Email Detail Panel -->
-      <div class="overflow-hidden flex flex-col">
-        <div class="flex-1 flex items-center justify-center">
-          <div class="text-center text-gray-500">
-            <div class="w-16 h-16 mx-auto text-gray-300 mb-4">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-full h-full" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                </path>
-                <polyline stroke-linecap="round" stroke-linejoin="round"
-                          points="22,6 12,13 2,6">
-                </polyline>
-              </svg>
+      <%= turbo_frame_tag "email_detail",
+          class: "overflow-hidden flex flex-col hidden md:flex" do %>
+        <% if @selected_email %>
+          <%= render "email_detail", email: @selected_email %>
+        <% else %>
+          <div class="flex-1 flex items-center justify-center">
+            <div class="text-center text-gray-500">
+              <div class="w-16 h-16 mx-auto text-gray-300 mb-4">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-full h-full" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                  </path>
+                  <polyline stroke-linecap="round" stroke-linejoin="round"
+                            points="22,6 12,13 2,6">
+                  </polyline>
+                </svg>
+              </div>
+              <h3 class="text-lg font-medium mb-2">No email selected</h3>
+              <p>Select an email from the list to view its contents</p>
             </div>
-            <h3 class="text-lg font-medium mb-2">No email selected</h3>
-            <p>Select an email from the list to view its contents</p>
           </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
 
     </div>
   </div>
