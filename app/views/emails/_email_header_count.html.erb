@@ -1,0 +1,4 @@
+<div class="text-sm text-gray-500">
+  <%= pluralize(Email.unread.count, 'unread message') %> ·
+  <%= pluralize(Email.count, 'total message') %>
+</div>
