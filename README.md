@@ -1,8 +1,6 @@
 # 📧 Rails Hotwire Email Inbox
 
-A modern email inbox built with Rails 8 and Hotwire, demonstrating how to achieve React-like functionality with server-side rendering and 60% less code.
-
-> **Based on:** [React Email Inbox Tutorial](https://github.com/zacharywelch/inbox) - This Rails implementation demonstrates the same functionality using server-side approaches vs client-side React patterns.
+A learning project exploring Rails 8 and Hotwire by building an email inbox interface. This implementation follows the same design and functionality as a [React tutorial](https://github.com/zacharywelch/inbox) to compare server-side vs client-side approaches.
 
 ## ✨ Features
 
@@ -31,7 +29,13 @@ rails db:create db:migrate db:seed
 bin/dev
 ```
 
-Visit `http://localhost:3000`
+Visit http://localhost:3000
+
+## 🎨 Component Library
+
+Explore the ViewComponent design system with interactive previews:
+
+Visit http://localhost:3000/lookbook to browse all components with live controls for testing different variants, sizes, and states.
 
 ## 📋 Requirements
 
@@ -44,4 +48,5 @@ Visit `http://localhost:3000`
 - **Rails 8.0** with Hotwire (Turbo + Stimulus)
 - **PostgreSQL** database
 - **ViewComponent** for reusable UI components
+- **Lookbook** for component development and documentation
 - **Tailwind CSS** for styling

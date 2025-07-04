@@ -38,5 +38,6 @@ module RailsInbox
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.lookbook.preview_layout = 'lookbook'
   end
 end
