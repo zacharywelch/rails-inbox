@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_02_143337) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_04_204147) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -24,6 +24,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_02_143337) do
     t.text "labels", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["labels"], name: "index_emails_on_labels", using: :gin
     t.index ["read", "received_at"], name: "index_emails_on_read_and_received_at"
     t.index ["read"], name: "index_emails_on_read"

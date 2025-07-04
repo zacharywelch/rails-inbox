@@ -27,7 +27,7 @@
 
     <!-- Sender info -->
     <div class='flex items-center space-x-3 mb-3'>
-      <%= render AvatarComponent.new(name: email.from) %>
+      <%= render AvatarComponent.new(name: email.from, avatar: email.avatar) %>
       <div class='flex-1 min-w-0'>
         <div class='font-medium text-gray-900 text-base mb-1'>
           <%= email.from %>

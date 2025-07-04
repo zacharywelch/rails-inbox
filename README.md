@@ -1,89 +1,47 @@
-# Rails Hotwire Email Inbox
+# 📧 Rails Hotwire Email Inbox
 
-A modern email inbox application built with Rails 8 and Hotwire, demonstrating server-side rendering with SPA-like user experience.
+A modern email inbox built with Rails 8 and Hotwire, demonstrating how to achieve React-like functionality with server-side rendering and 60% less code.
 
-## Purpose
+> **Based on:** [React Email Inbox Tutorial](https://github.com/zacharywelch/inbox) - This Rails implementation demonstrates the same functionality using server-side approaches vs client-side React patterns.
 
-This application implements the same email inbox functionality as the [React Email Inbox Tutorial](https://github.com/zacharywelch/inbox), allowing direct comparison between client-side and server-side approaches.
+## ✨ Features
 
-**Key architectural differences:**
-- **Rails + Hotwire**: Server-rendered HTML with progressive enhancement
-- **React version**: Client-side rendering with complex state management
+- Interactive email list with responsive design
+- Real-time UI updates with Turbo Streams
+- ViewComponent design system (buttons, badges, icons, avatars)
+- Avatar support with image fallbacks
+- Mobile-first Tailwind CSS styling
 
-## Features
+## 🏗️ Architecture Benefits
 
-- 📧 Email list with responsive layout
-- 📱 Mobile-first design with Tailwind CSS
-- ⚡ Fast navigation with Turbo Drive
-- 🔄 Instant UI updates with Turbo Streams (coming in later chapters)
-- ⭐ Interactive email actions (star, read, delete) with smooth UX
+| Rails + Hotwire | React SPA |
+|-----------------|-----------|
+| Immediate HTML delivery | JavaScript must execute first |
+| Server-side state | Complex client-side state |
+| Minimal bundle size | Large bundle size |
+| Convention over configuration | Configuration over convention |
 
-## Tech Stack
+## 🚀 Getting Started
 
-- **Rails 8.0.2** - Latest stable release
-- **PostgreSQL 14+** - Production-ready database
-- **Hotwire** (Turbo + Stimulus) - Modern Rails frontend
-- **Tailwind CSS** - Utility-first styling
-- **System fonts** - Optimal performance and readability
+```bash
+git clone https://github.com/zacharywelch/rails-inbox.git
+cd rails-inbox
+bundle install
+rails db:create db:migrate db:seed
+bin/dev
+```
 
-## Prerequisites
+Visit `http://localhost:3000`
+
+## 📋 Requirements
 
 - Ruby 3.2+
 - Rails 8.0+
 - PostgreSQL 14+
-- Node.js 18+ (for Tailwind CSS compilation)
 
-## Setup
+## 🛠️ Tech Stack
 
-```bash
-# Clone and setup
-git clone [your-repo-url]
-cd rails_hotwire_inbox
-
-# Install dependencies
-bundle install
-
-# Setup database
-rails db:create
-rails db:migrate
-
-# Start development server
-bin/dev
-```
-
-Visit `http://localhost:3000` to see the application.
-
-## Development
-
-This application follows Rails conventions and demonstrates:
-
-- **Convention over Configuration**: Minimal setup, maximum functionality
-- **Progressive Enhancement**: Works without JavaScript, enhanced with it
-- **Server-Side Rendering**: Fast initial page loads, excellent SEO
-- **Instant UI Updates**: Smooth interactions without complex state management
-
-## Architecture Benefits
-
-| Aspect | Rails + Hotwire | React SPA |
-|--------|-----------------|-----------|
-| Initial Setup | One command | Multiple tools to configure |
-| Page Load | Immediate HTML | JavaScript must execute first |
-| State Management | Server-side, simple | Complex client-side libraries |
-| UI Updates | Instant Turbo Streams | Manual state synchronization |
-| SEO | Excellent by default | Requires SSR configuration |
-| Bundle Size | ~50KB (Hotwire) | 200KB+ (React + ecosystem) |
-
-## Tutorial Progress
-
-- [x] **Chapter 1**: Rails 8 setup with Hotwire and Tailwind CSS
-- [x] **Chapter 2**: Email models and database schema
-- [x] **Chapter 3**: Email list with server-side rendering
-- [x] **Chapter 4**: Interactive selection with Turbo Frames
-- [x] **Chapter 5**: Interactive email actions with Turbo Streams
-- [x] **Chapter 6**: Responsive email detail view
-- [x] **Chapter 7**: Professional UI with ViewComponent
-- [ ] **Chapter 8**: Advanced Hotwire patterns and optimizations
-
-## License
-
-This project is for educational purposes, demonstrating modern Rails development patterns.
+- **Rails 8.0** with Hotwire (Turbo + Stimulus)
+- **PostgreSQL** database
+- **ViewComponent** for reusable UI components
+- **Tailwind CSS** for styling
