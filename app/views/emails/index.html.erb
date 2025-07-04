@@ -17,16 +17,13 @@
             </div>
 
             <div class='flex space-x-2'>
-              <%= link_to emails_path,
-                  class: 'px-4 py-2 text-sm border border-gray-300
-                         rounded-md hover:bg-gray-50 transition-colors' do %>
+              <%= render ButtonComponent.new(as: :a, href: emails_path) do %>
                 Refresh
               <% end %>
 
-              <button class='px-4 py-2 text-sm bg-blue-600 text-white
-                             rounded-md hover:bg-blue-700 transition-colors'>
+              <%= render ButtonComponent.new(variant: :primary) do %>
                 New Email
-              </button>
+              <% end %>
             </div>
           </div>
         </div>
@@ -47,15 +44,10 @@
           data: { inbox_target: 'emailDetail' } do %>
         <div class='flex-1 flex items-center justify-center'>
           <div class='text-center text-gray-500'>
-            <svg class='h-12 w-12 mx-auto mb-4 text-gray-300'
-                 fill='none'
-                 stroke='currentColor'
-                 viewBox='0 0 24 24'>
-              <path stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'/>
-            </svg>
+            <%= render Icons::MailComponent.new(
+                  size: :xxl,
+                  class: 'mx-auto text-gray-300 mb-2'
+                ) %>
             <h3 class='text-lg font-medium mb-2'>No email selected</h3>
             <p>Select an email from the list to view its contents</p>
           </div>

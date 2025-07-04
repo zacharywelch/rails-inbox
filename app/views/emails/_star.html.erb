@@ -9,6 +9,6 @@
       form: { class: 'flex items-center' },
       data: { turbo_frame: star_id(email, location) },
       onclick: 'event.stopPropagation()' do %>
-    <%= star_icon(email.starred?) %>
+    <%= render Icons::StarComponent.new(filled: email.starred?) %>
   <% end %>
 <% end %>

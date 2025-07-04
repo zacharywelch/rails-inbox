@@ -1,0 +1,13 @@
+<%= content_tag :div, **component_attributes do %>
+  <div class="<%= avatar_classes %>">
+    <% if avatar.present? %>
+      <%= image_tag avatar,
+            alt: "Avatar for #{name}",
+            class: 'aspect-square h-full w-full object-cover rounded-full' %>
+    <% else %>
+      <span class="<%= text_classes %>">
+        <%= initials %>
+      </span>
+    <% end %>
+  </div>
+<% end %>

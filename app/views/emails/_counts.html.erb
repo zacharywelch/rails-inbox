@@ -1,3 +1,7 @@
 <div class='text-sm text-gray-500'>
-  <%= Email.unread.count %> unread of <%= Email.count %> total
+  <% if (@unread_count = Email.unread.count) > 0 %>
+    <%= @unread_count %> unread of <%= Email.count %> total
+  <% else %>
+    No unread messages
+  <% end %>
 </div>

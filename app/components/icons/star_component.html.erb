@@ -1,0 +1,7 @@
+<%= content_tag :svg, **component_attributes do %>
+  <% if filled %>
+    <path d="<%= star_path %>"/>
+  <% else %>
+    <path fill="none" stroke="currentColor" stroke-width="2" d="<%= star_path %>"/>
+  <% end %>
+<% end %>
