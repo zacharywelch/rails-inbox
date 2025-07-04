@@ -1,0 +1,7 @@
+<%= turbo_stream.replace star_id(@email, :list) do %>
+  <%= render 'star', email: @email, location: :list %>
+<% end %>
+
+<%= turbo_stream.replace star_id(@email, :detail) do %>
+  <%= render 'star', email: @email, location: :detail%>
+<% end %>

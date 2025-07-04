@@ -1,0 +1,14 @@
+<%= turbo_frame_tag star_id(email, location), class: 'flex items-center' do %>
+  <%= button_to star_email_path(email),
+      method: :patch,
+      class: [
+        'w-4 p-0 mr-1 bg-transparent border-0 transition-colors',
+        'text-yellow-400 hover:text-yellow-500' => email.starred?,
+        'text-gray-400 hover:text-yellow-400' => !email.starred?
+      ],
+      form: { class: 'flex items-center' },
+      data: { turbo_frame: star_id(email, location) },
+      onclick: 'event.stopPropagation()' do %>
+    <%= star_icon(email.starred?) %>
+  <% end %>
+<% end %>

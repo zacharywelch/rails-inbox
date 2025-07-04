@@ -79,7 +79,7 @@ This application follows Rails conventions and demonstrates:
 - [x] **Chapter 2**: Email models and database schema
 - [x] **Chapter 3**: Email list with server-side rendering
 - [x] **Chapter 4**: Interactive selection with Turbo Frames
-- [ ] **Chapter 5**: Interactive email actions with Turbo Streams
+- [x] **Chapter 5**: Interactive email actions with Turbo Streams
 - [x] **Chapter 6**: Responsive email detail view
 - [ ] **Chapter 7**: Professional UI with ViewComponent
 - [ ] **Chapter 8**: Advanced Hotwire patterns and optimizations
