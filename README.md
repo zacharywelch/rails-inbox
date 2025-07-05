@@ -9,16 +9,19 @@ A learning project exploring Rails 8 and Hotwire by building an email inbox inte
 - ViewComponent design system with avatar fallbacks and reusable UI
 - Progressive enhancement (works without JavaScript)
 
-## 🏗️ Architecture Benefits
+## 🏗️ Architecture Comparison
 
 | Rails + Hotwire | React SPA |
 |-----------------|-----------|
-| **Immediate HTML delivery** | JavaScript must execute first |
-| **60% less code** | Complex state management required |
-| **~50KB bundle size** | ~200KB+ React dependencies |
-| **Convention over configuration** | Configuration over convention |
-| **Automatic UI updates** via Turbo Streams | Manual state updates and re-renders |
-| **Single language (Ruby)** | Multiple languages (JS + backend) |
+| **Server-rendered HTML** - immediate page loads | **Client-rendered** - consistent JavaScript environment |
+| **Turbo Frames** - partial page updates without full refreshes | **Component re-rendering** - efficient DOM updates |
+| **Automatic UI updates** via Turbo Streams | **Manual state updates** and re-renders |
+| **Progressive enhancement** - works without JS | **JavaScript required** - needs runtime for functionality |
+| **Database as source of truth** - no state synchronization | **Client state management** - manual sync with data |
+| **Single language (Ruby)** - full-stack consistency | **Multi-language** - JavaScript frontend + backend API |
+| **Minimal JavaScript** - ~50KB Hotwire bundle | **Larger bundles** - React + dependencies (~200KB+) |
+| **Full-stack cohesion** - integrated development experience | **Specialized tooling** - best-in-class development tools |
+| **Convention over configuration** - Rails patterns | **Explicit composition** - clear component logic |
 
 ## 🚀 Getting Started
 

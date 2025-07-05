@@ -20,4 +20,11 @@ class IconsComponentPreview < ViewComponent::Preview
   def arrow_left(size: :sm, css_class: "text-gray-400")
     render Icons::ArrowLeftComponent.new(size: size.to_sym, class: css_class)
   end
+
+  # @label Spinner Icon
+  # @param size select { choices: ["xs", "sm", "md", "lg", "xl", "xxl"] }
+  # @param css_class select { choices: ["text-gray-400", "text-blue-600", "text-red-600"] }
+  def spinner(size: :sm, css_class: "text-gray-400")
+    render Icons::SpinnerComponent.new(size: size.to_sym, class: css_class)
+  end
 end

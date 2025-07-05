@@ -14,8 +14,21 @@
         </div>
 
         <div class='flex space-x-2'>
-          <%= render ButtonComponent.new(as: :a, href: emails_path) do %>
-            Refresh
+          <%= render ButtonComponent.new(
+                as: :a,
+                href: emails_path,
+                data: {
+                  controller: 'spin',
+                  spin_text_value: 'Refreshing...',
+                  action: 'click->spin#show'
+                }
+              ) do %>
+            <%= render Icons::SpinnerComponent.new(
+                  size: :sm,
+                  class: 'hidden',
+                  data: { spin_target: 'spinner' }
+                ) %>
+            <span data-spin-target='text'>Refresh</span>
           <% end %>
 
           <%= render ButtonComponent.new(variant: :primary) do %>

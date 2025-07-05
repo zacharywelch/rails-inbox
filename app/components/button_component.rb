@@ -1,5 +1,5 @@
 class ButtonComponent < ApplicationComponent
-  BASE_CLASSES = 'inline-flex items-center gap-2 text-sm rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2'
+  BASE_CLASSES = 'inline-flex items-center gap-2 text-sm rounded-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
   VARIANTS = {
     variant: {
       primary: 'px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500',
@@ -12,17 +12,19 @@ class ButtonComponent < ApplicationComponent
     variant: :default,
     shadow: false,
     as: :button,
+    disabled: false,
     **html_attributes
   )
     @variant = variant
     @shadow = shadow
     @as = as
+    @disabled = disabled
     @html_attributes = html_attributes
   end
 
   private
 
-  attr_reader :variant, :shadow, :as, :html_attributes
+  attr_reader :variant, :shadow, :as, :disabled, :html_attributes
 
   def component_classes
     cn(
@@ -35,6 +37,7 @@ class ButtonComponent < ApplicationComponent
   def component_attributes
     attrs = html_attributes.dup
     attrs[:class] = cn(component_classes, attrs[:class])
+    attrs[:disabled] = disabled if as == :button
     attrs
   end
 end
