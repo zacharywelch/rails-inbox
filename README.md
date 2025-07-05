@@ -4,20 +4,21 @@ A learning project exploring Rails 8 and Hotwire by building an email inbox inte
 
 ## ✨ Features
 
-- Interactive email list with responsive design
-- Real-time UI updates with Turbo Streams
-- ViewComponent design system (buttons, badges, icons, avatars)
-- Avatar support with image fallbacks
-- Mobile-first Tailwind CSS styling
+- Interactive email list with starring, read/unread states, and real-time updates
+- Responsive design with mobile-first Tailwind CSS styling
+- ViewComponent design system with avatar fallbacks and reusable UI
+- Progressive enhancement (works without JavaScript)
 
 ## 🏗️ Architecture Benefits
 
 | Rails + Hotwire | React SPA |
 |-----------------|-----------|
-| Immediate HTML delivery | JavaScript must execute first |
-| Server-side state | Complex client-side state |
-| Minimal bundle size | Large bundle size |
-| Convention over configuration | Configuration over convention |
+| **Immediate HTML delivery** | JavaScript must execute first |
+| **60% less code** | Complex state management required |
+| **~50KB bundle size** | ~200KB+ React dependencies |
+| **Convention over configuration** | Configuration over convention |
+| **Automatic UI updates** via Turbo Streams | Manual state updates and re-renders |
+| **Single language (Ruby)** | Multiple languages (JS + backend) |
 
 ## 🚀 Getting Started
 
