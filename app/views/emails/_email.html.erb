@@ -19,7 +19,8 @@
       <div class='flex-grow min-w-0'>
         <div class='flex items-center'>
           <%= render 'star', email: email, location: :list %>
-          <%= tag.span email.from, class: ['font-medium', 'font-bold' => !email.read?] %>
+          <%= tag.span email.from,
+              class: ['font-medium', 'font-bold' => !email.read?] %>
         </div>
 
         <%= tag.div email.subject, class: ['font-bold' => !email.read?] %>

@@ -1,59 +1,54 @@
-<main class='min-h-screen bg-gray-100'>
-  <div class='container mx-auto py-16 px-8 max-w-6xl'>
-    <div class='bg-white rounded-lg shadow-md overflow-hidden
-                h-[calc(100vh-8rem)]
-                grid grid-rows-[auto_1fr] md:grid-cols-[2fr_3fr]'
-         data-controller='inbox'>
+<div class='bg-white rounded-lg shadow-md overflow-hidden h-[calc(100vh-8rem)]
+            grid grid-rows-[auto_1fr] md:grid-cols-[2fr_3fr]'
+     data-controller='inbox'>
 
-      <!-- Header Section -->
-      <div class='col-span-full'>
-        <div class='bg-gray-50 p-4 border-b border-gray-200'>
-          <div class='flex justify-between items-center'>
-            <div>
-              <h1 class='font-medium text-lg'>Inbox</h1>
-              <%= turbo_frame_tag 'counts' do %>
-                <%= render 'counts' %>
-              <% end %>
-            </div>
+  <!-- Header Section -->
+  <div class='col-span-full'>
+    <div class='bg-gray-50 p-4 border-b border-gray-200'>
+      <div class='flex justify-between items-center'>
+        <div>
+          <h1 class='font-medium text-lg'>Inbox</h1>
+          <%= turbo_frame_tag 'counts' do %>
+            <%= render 'counts' %>
+          <% end %>
+        </div>
 
-            <div class='flex space-x-2'>
-              <%= render ButtonComponent.new(as: :a, href: emails_path) do %>
-                Refresh
-              <% end %>
+        <div class='flex space-x-2'>
+          <%= render ButtonComponent.new(as: :a, href: emails_path) do %>
+            Refresh
+          <% end %>
 
-              <%= render ButtonComponent.new(variant: :primary) do %>
-                New Email
-              <% end %>
-            </div>
-          </div>
+          <%= render ButtonComponent.new(variant: :primary) do %>
+            New Email
+          <% end %>
         </div>
       </div>
-
-      <!-- Email List Panel -->
-      <div class='border-b md:border-b-0 md:border-r border-gray-200
-                  overflow-hidden flex flex-col'
-           data-inbox-target='emailList'>
-        <div class='divide-y divide-gray-200 overflow-y-auto flex-1'>
-          <%= render @emails, selected: false, empty: 'No emails found' %>
-        </div>
-      </div>
-
-      <!-- Email Detail Panel -->
-      <%= turbo_frame_tag 'detail',
-          class: 'overflow-hidden flex flex-col hidden md:flex',
-          data: { inbox_target: 'emailDetail' } do %>
-        <div class='flex-1 flex items-center justify-center'>
-          <div class='text-center text-gray-500'>
-            <%= render Icons::MailComponent.new(
-                  size: :xxl,
-                  class: 'mx-auto text-gray-300 mb-2'
-                ) %>
-            <h3 class='text-lg font-medium mb-2'>No email selected</h3>
-            <p>Select an email from the list to view its contents</p>
-          </div>
-        </div>
-      <% end %>
-
     </div>
   </div>
-</main>
+
+  <!-- Email List Panel -->
+  <div class='border-b md:border-b-0 md:border-r border-gray-200
+              overflow-hidden flex flex-col'
+       data-inbox-target='emailList'>
+    <div class='divide-y divide-gray-200 overflow-y-auto flex-1'>
+      <%= render @emails, selected: false, empty: 'No emails found' %>
+    </div>
+  </div>
+
+  <!-- Email Detail Panel -->
+  <%= turbo_frame_tag 'detail',
+      class: 'overflow-hidden flex flex-col hidden md:flex',
+      data: { inbox_target: 'emailDetail' } do %>
+    <div class='flex-1 flex items-center justify-center'>
+      <div class='text-center text-gray-500'>
+        <%= render Icons::MailComponent.new(
+              size: :xxl,
+              class: 'mx-auto text-gray-300 mb-2'
+            ) %>
+        <h3 class='text-lg font-medium mb-2'>No email selected</h3>
+        <p>Select an email from the list to view its contents</p>
+      </div>
+    </div>
+  <% end %>
+
+</div>
