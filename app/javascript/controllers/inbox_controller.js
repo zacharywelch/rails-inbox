@@ -2,25 +2,25 @@ import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
   static targets = ['emailList', 'emailDetail']
+  static classes = ['mobile']
   static values = { selectedId: String }
 
-  selectEmail(event) {
-    const clickedEmailId = event.currentTarget.dataset.emailId
-    this.clearSelection()
-    this.selectedIdValue = clickedEmailId
+  selectEmail({ params: { emailId } }) {
+    if (this.selectedIdValue == emailId) return
+
+    this.selectedIdValue = emailId
     this.showDetailPanel()
   }
 
   backToInbox(event) {
     event.preventDefault()
-    this.clearSelection()
+    this.selectedIdValue = ''
     this.showListPanel()
   }
 
   // Private methods
 
-  clearSelection() {
-    this.selectedIdValue = ''
+  selectedIdValueChanged() {
     const selectedElement = this.element.querySelector('.border-blue-600')
     if (selectedElement) {
       selectedElement.classList.remove('border-l-4', 'border-blue-600')
@@ -28,12 +28,12 @@ export default class extends Controller {
   }
 
   showDetailPanel() {
-    this.emailListTarget.classList.add('hidden', 'md:flex')
-    this.emailDetailTarget.classList.remove('hidden', 'md:flex')
+    this.emailListTarget.classList.add(...this.mobileClasses)
+    this.emailDetailTarget.classList.remove(...this.mobileClasses)
   }
 
   showListPanel() {
-    this.emailListTarget.classList.remove('hidden', 'md:flex')
-    this.emailDetailTarget.classList.add('hidden', 'md:flex')
+    this.emailListTarget.classList.remove(...this.mobileClasses)
+    this.emailDetailTarget.classList.add(...this.mobileClasses)
   }
 }
