@@ -2,6 +2,8 @@
 
 A learning project exploring Rails 8 and Hotwire by building an email inbox interface. This implementation follows the same design and functionality as a [React tutorial](https://github.com/zacharywelch/inbox) to compare server-side vs client-side approaches.
 
+<img width="1146" height="807" alt="image" src="https://github.com/user-attachments/assets/0eb215c3-512d-44ea-beab-b76eddf66cd0" />
+
 ## ✨ Features
 
 - Interactive email list with starring, read/unread states, and real-time updates
